@@ -112,8 +112,9 @@ public class Mainframe {
 
         // Create buttons with bubble coloring effect using BubbleButton class
         BubbleButton homeButton = new BubbleButton("Home");
-        BubbleButton eventsButton = new BubbleButton("Events & Promos");
-        BubbleButton contactButton = new BubbleButton("Contact Us");
+        BubbleButton receiptButton = new BubbleButton("Check Receipts");
+        BubbleButton checkoutButton = new BubbleButton("Check Out");
+        
 
         // Create a "Logout" button with the logout.png image
         JButton logoutButton = new JButton();
@@ -165,9 +166,9 @@ public class Mainframe {
         leftPanel.add(Box.createRigidArea(new Dimension(0, 20))); // Add space
         leftPanel.add(homeButton);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 40))); // Add space
-        leftPanel.add(eventsButton);
+        leftPanel.add(receiptButton);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 40))); // Add space
-        leftPanel.add(contactButton);
+        leftPanel.add(checkoutButton);
 
         // Add the "Logout" button to the bottom of the left panel
         leftPanel.add(Box.createRigidArea(new Dimension(0, 350))); // Add space
