@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class Mainframe {
+    public static boolean confirm = false;
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             createMenuWindow();
@@ -23,6 +25,7 @@ public class Mainframe {
         frame.setSize(1100, 943);
         frame.setResizable(false);
         frame.getContentPane().setBackground(Color.DARK_GRAY);
+
 
         // Create a custom header panel with a background image
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)) {
@@ -124,6 +127,8 @@ BubbleButton buyTicketButton = new BubbleButton("Buy Ticket");
         buyTicketButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                new MovieTicketBookingSystem();
             
             }
         });
@@ -156,6 +161,10 @@ BubbleButton buyTicketButton1 = new BubbleButton("Buy Ticket");
         buyTicketButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            
+
+                new MovieTicketBookingSystem();
+                
             
             }
         });
@@ -250,9 +259,21 @@ centerPanel.add(ohImagePanel);
         headerPanel.add(textLabel);
 
         // Create buttons with bubble coloring effect using BubbleButton class
-        BubbleButton homeButton = new BubbleButton("Home");
+        BubbleButton profileButton = new BubbleButton("Profile");
         BubbleButton receiptButton = new BubbleButton("Check Receipts");
-        BubbleButton checkoutButton = new BubbleButton("Check Out");
+
+        receiptButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+
+                MovieTicketBookingSystem mtbs = new MovieTicketBookingSystem();
+
+                mtbs.viewReceipts();
+            }
+        });
+
+        
+      
+
 
         // Create a "Logout" button with the logout.png image
         JButton logoutButton = new JButton();
@@ -288,8 +309,14 @@ centerPanel.add(ohImagePanel);
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Implement the logout functionality here
-                // For example, close the application or navigate to a logout page
+            
+                new Logout();
+
+                if (confirm){
+                    frame.dispose();
+                    
+                }
+                
             }
         });
 
@@ -303,11 +330,10 @@ centerPanel.add(ohImagePanel);
         // Add buttons to leftPanel using BoxLayout
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         leftPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        leftPanel.add(homeButton);
+        leftPanel.add(profileButton);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         leftPanel.add(receiptButton);
-        leftPanel.add(Box.createRigidArea(new Dimension(0, 40)));
-        leftPanel.add(checkoutButton);
+
 
         // Add the "Logout" button to the bottom of the left panel
         leftPanel.add(Box.createRigidArea(new Dimension(0, 350)));
